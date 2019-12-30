@@ -148,6 +148,54 @@ namespace Mirror
         /// </summary>
         [NonSerialized]
         public bool clientLoadedScene;
+        //DODANO
+        //public GameObject magicBall;
+
+        //// Register prefab and connect to the server  
+        //public void ClientConnect()
+        //{
+        //    ClientScene.RegisterPrefab(magicBall);
+        //    NetworkClient.RegisterHandler<ConnectMessage>(OnClientConnect);
+        //    NetworkClient.Connect("localhost");
+        //}
+
+        //void OnClientConnect(NetworkConnection conn, ConnectMessage msg)
+        //{
+        //    Debug.Log("Connected to server: " + conn);
+        //}
+
+        //public void ServerListen()
+        //{
+        //    NetworkServer.RegisterHandler<ConnectMessage>(OnServerConnect);
+        //    NetworkServer.RegisterHandler<ReadyMessage>(OnClientReady);
+
+        //    if (NetworkServer.Listen(7777))
+        //        Debug.Log("Server started listening on port 7777");
+        //}
+
+        //// When client is ready spawn a few trees  
+        //void OnClientReady(NetworkConnection conn, ReadyMessage msg)
+        //{
+        //    Debug.Log("Client is ready to start: " + conn);
+        //    NetworkServer.SetClientReady(conn);
+        //    SpawnMagic();
+        //}
+
+        //void SpawnMagic()
+        //{
+        //    int x = 0;
+        //    for (int i = 0; i < 5; ++i)
+        //    {
+        //        GameObject treeGo = Instantiate(magicBall, new Vector3(x++, 0, 0), Quaternion.identity);
+        //        NetworkServer.Spawn(treeGo);
+        //    }
+        //}
+
+        //void OnServerConnect(NetworkConnection conn, ConnectMessage msg)
+        //{
+        //    Debug.Log("New client connected: " + conn);
+        //}
+        //SVE DO TU DODANO
 
         /// <summary>
         /// Obsolete: Use <see cref="NetworkClient.isConnected"/> instead
