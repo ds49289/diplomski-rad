@@ -14,10 +14,10 @@ public class SpawnMagic : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            CmdInstantiateMagicBall();
-        }
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    CmdInstantiateMagicBall();
+        //}
     }
 
     [Command] public void CmdInstantiateMagicBall()

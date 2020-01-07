@@ -1,50 +1,68 @@
-﻿using System.Collections;
+﻿using Mirror;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMotor))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
+    private float moveSpeed = 5f;
     [SerializeField]
-    private float lookSensitivity = 3f;
+    private float turnSpeed = 5f;
 
-    private PlayerMotor motor;
+    private CharacterController characterController;
+    
+    [SerializeField]
+    private Transform lookAtTransform;
 
-    void Start()
+    void Awake()
     {
-        motor = GetComponent<PlayerMotor>();
+        characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        //Calculate movement velocity as a 3D vector
-        float _xMov = Input.GetAxisRaw("Horizontal");
-        float _zMov = Input.GetAxisRaw("Vertical");
+        var horizontal = Input.GetAxisRaw("Horizontal");
+        var vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 _movHorizontal = transform.right * _xMov;
-        Vector3 _movVertical = transform.forward * _zMov;
+        PlayerMovement(horizontal, vertical);
+    }
 
-        Vector3 _velocity = (_movHorizontal + _movVertical).normalized * speed;
 
-        //Apply movement
-        motor.Move(_velocity);
+    public void PlayerMovement(float horizontal, float vertical)
+    {
+        var movement = new Vector3(0, 0, 0);
 
-        //Calculate rotation as a 3D vector (turning around)
-        float _yRot = Input.GetAxisRaw("Mouse X");
+        var xVector = new Vector3();
+        var zVector = new Vector3();
+        if (vertical == 1)
+        {
+            xVector = lookAtTransform.forward;
+        }
+        if (vertical == -1)
+        {
+            xVector = -lookAtTransform.forward;
+        }
+        if (horizontal == 1)
+        {
+            zVector = lookAtTransform.right;
+        }
+        if (horizontal == -1)
+        {
+            zVector = -lookAtTransform.right;
+        }
+        movement = xVector + zVector;
 
-        Vector3 _rotation = new Vector3(0f, _yRot * lookSensitivity);
+        movement.y = 0;
+        movement.Normalize();
 
-        //Apply rotation
-        motor.Rotate(_rotation);
+        characterController.SimpleMove(movement * Time.deltaTime * moveSpeed);
 
-        //Calculate camera rotation as a 3D vector (turning around)
-        float _xRot = Input.GetAxisRaw("Mouse Y");
+        if (movement.magnitude > 0)
+        {
+            Quaternion newDirection = Quaternion.LookRotation(movement);
 
-        Vector3 _cameraRotation = new Vector3(0f, _xRot * lookSensitivity);
-
-        //Apply rotation
-        motor.RotateCamera(_cameraRotation);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * turnSpeed);
+        }
     }
 }

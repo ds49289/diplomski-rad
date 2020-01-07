@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5088882108844424577}
   - component: {fileID: 4843668485999744735}
   m_Layer: 0
-  m_Name: Camera 1
+  m_Name: Camera Mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6308345262346745246}
-  m_LocalRotation: {x: -0.053946666, y: -0.9596096, z: -0.21283609, w: -0.1758978}
+  m_LocalRotation: {x: -0.07638202, y: -0.88453794, z: -0.20048042, w: -0.41420537}
   m_LocalPosition: {x: 0, y: 2.17, z: -2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
