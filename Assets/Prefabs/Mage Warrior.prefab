@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 8758376145621183611}
   - component: {fileID: -3716649667381332347}
   - component: {fileID: 3459526736394684318}
+  - component: {fileID: 530179246271165646}
   m_Layer: 0
   m_Name: Mage Warrior
   m_TagString: Player
@@ -42,7 +43,7 @@ Transform:
   - {fileID: 1442250578753456133}
   - {fileID: 1442250578753456155}
   - {fileID: 1442250578753358977}
-  - {fileID: 3281745600696789093}
+  - {fileID: 3294738596902782469}
   - {fileID: 2035275333467205009}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,12 +56,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442250578753523211}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7c72ed3f90575084c9f3b5b585887182, type: 3}
   m_Controller: {fileID: 9100000, guid: 021ed2d8525a1b7488aade4080c5a087, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -252,6 +253,22 @@ MonoBehaviour:
   currentY: 0
   sensitivityX: 4
   sensitivityY: 1
+--- !u!114 &530179246271165646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442250578753523211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2ea1c9b841554468161f7f5ad92f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  Moving: 0
+  anim: {fileID: 1442250578744270527}
 --- !u!1 &1442250578753545317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2209,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1374587752891779761, guid: 88bc080ae7377704a89f8dcdc466bd2d,
+        type: 3}
+      propertyPath: m_Bones.Array.data[0]
+      value: 
+      objectReference: {fileID: 1442250578753359065}
+    - target: {fileID: 1374587752891779761, guid: 88bc080ae7377704a89f8dcdc466bd2d,
+        type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 1442250578753359065}
     - target: {fileID: 2566470681839545829, guid: 88bc080ae7377704a89f8dcdc466bd2d,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2207,16 +2234,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1374587752891779761, guid: 88bc080ae7377704a89f8dcdc466bd2d,
-        type: 3}
-      propertyPath: m_Bones.Array.data[0]
-      value: 
-      objectReference: {fileID: 1442250578753359065}
-    - target: {fileID: 1374587752891779761, guid: 88bc080ae7377704a89f8dcdc466bd2d,
-        type: 3}
-      propertyPath: m_RootBone
-      value: 
-      objectReference: {fileID: 1442250578753359065}
     - target: {fileID: 2566470681839545604, guid: 88bc080ae7377704a89f8dcdc466bd2d,
         type: 3}
       propertyPath: m_AssetId
@@ -2329,7 +2346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4a630fb01b501642955f244f2f2ad7d, type: 3}
---- !u!4 &3281745600696789093 stripped
+--- !u!4 &3294738596902782469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 14172089436302908, guid: c4a630fb01b501642955f244f2f2ad7d,
     type: 3}
