@@ -11,8 +11,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private float shootingTimeDisable = 0.5f; 
 
-    private bool timerReached = true;
-    public float timer = 0;
+    private bool isShooting = true;
 
     private CharacterController characterController;
 
@@ -31,7 +30,7 @@ public class PlayerController : NetworkBehaviour
             StartCoroutine(DisableMovementIfShooting());
         }
 
-        if (timerReached)
+        if (isShooting)
         {
 
             var horizontal = Input.GetAxisRaw("Horizontal");
@@ -82,10 +81,10 @@ public class PlayerController : NetworkBehaviour
 
     private IEnumerator DisableMovementIfShooting()
     {
-        timerReached = false;
+        isShooting = false;
 
         yield return new WaitForSecondsRealtime(shootingTimeDisable);
 
-        timerReached = true;
+        isShooting = true;
     }
 }
