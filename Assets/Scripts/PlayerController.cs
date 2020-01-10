@@ -1,6 +1,5 @@
 ﻿using Mirror;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
@@ -9,9 +8,14 @@ public class PlayerController : NetworkBehaviour
     private float moveSpeed = 5f;
     [SerializeField]
     private float turnSpeed = 5f;
+    [SerializeField]
+    private float shootingTimeDisable = 0.5f; 
+
+    private bool timerReached = true;
+    public float timer = 0;
 
     private CharacterController characterController;
-    
+
     [SerializeField]
     private Transform lookAtTransform;
 
@@ -22,10 +26,20 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        var horizontal = Input.GetAxisRaw("Horizontal");
-        var vertical = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(DisableMovementIfShooting());
+        }
 
-        PlayerMovement(horizontal, vertical);
+        if (timerReached)
+        {
+
+            var horizontal = Input.GetAxisRaw("Horizontal");
+            var vertical = Input.GetAxisRaw("Vertical");
+
+            PlayerMovement(horizontal, vertical);
+        }
+
     }
 
 
@@ -64,5 +78,14 @@ public class PlayerController : NetworkBehaviour
 
             transform.rotation = Quaternion.Slerp(transform.rotation, newDirection, Time.deltaTime * turnSpeed);
         }
+    }
+
+    private IEnumerator DisableMovementIfShooting()
+    {
+        timerReached = false;
+
+        yield return new WaitForSecondsRealtime(shootingTimeDisable);
+
+        timerReached = true;
     }
 }
