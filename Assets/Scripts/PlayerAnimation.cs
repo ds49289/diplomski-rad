@@ -1,4 +1,5 @@
 ﻿using Mirror;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimation : NetworkBehaviour
@@ -8,9 +9,12 @@ public class PlayerAnimation : NetworkBehaviour
     public bool Moving = false;
     [SerializeField]
     private Animator anim;
+    private float AttackAnimationLength = 1f;
 
     void Update()
     {
+
+
         if (!isLocalPlayer)
         {
             return;
@@ -18,7 +22,22 @@ public class PlayerAnimation : NetworkBehaviour
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
 
+        //if (Input.GetButtonDown("Fire1"))
+        //{
+        //    StartCoroutine(WaitForAttackAnimationToFinish());
+        //    //PlayerAttackAnimation();
+        //}
+
         PlayerAnimate(horizontal, vertical);
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (!isLocalPlayer)
+            {
+                return;
+            }
+            PlayerAttackAnimation();
+        }
     }
 
     public void PlayerAnimate(float horizontal, float vertical)
@@ -58,6 +77,39 @@ public class PlayerAnimation : NetworkBehaviour
         }
     }
 
+    public void PlayerAttackAnimation()
+    {
+        Attack(true);
+        if (isServer)
+        {
+            RpcAttack(true);
+        }
+        else
+        {
+            CmdAttack(true);
+        }
+    }
+
+    void Attack(bool moving)
+    {
+        StartCoroutine(WaitForAttackAnimationToFinish());
+    }
+
+    [Command]
+    void CmdAttack(bool moving)
+    {
+        RpcAttack(moving);
+    }
+
+    [ClientRpc]
+    void RpcAttack(bool moving)
+    {
+        if (isLocalPlayer)
+            return;
+
+        Attack(moving);
+    }
+
     void Move(bool moving)
     {
         anim.SetBool("Moving", moving);
@@ -76,5 +128,14 @@ public class PlayerAnimation : NetworkBehaviour
             return;
 
         Move(moving);
+    }
+
+
+
+    private IEnumerator WaitForAttackAnimationToFinish()
+    {
+        anim.SetBool("Attack", true);
+        yield return new WaitForSecondsRealtime(AttackAnimationLength);
+        anim.SetBool("Attack", false);
     }
 }
