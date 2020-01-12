@@ -29,7 +29,7 @@ public class PlayerController : NetworkBehaviour
         var vertical = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Fire1"))
         {
-            StartCoroutine(DisableMovementIfShooting(horizontal, vertical));
+            StartCoroutine(DisableMovementIfShooting());
 
         }
 
@@ -79,10 +79,10 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    private IEnumerator DisableMovementIfShooting(float horizontal, float vertical)
+    private IEnumerator DisableMovementIfShooting()
     {
         isShooting = false;
-        yield return new WaitForSecondsRealtime(Mathf.Abs(horizontal) + Mathf.Abs(vertical));
+        yield return new WaitForSecondsRealtime(shootingTimeDisable);
         isShooting = true;
     }
 }

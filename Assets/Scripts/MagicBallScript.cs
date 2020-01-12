@@ -13,9 +13,7 @@ public class MagicBallScript : MonoBehaviour
     {
         lifeTimer = lifeDuration;
     }
-    // Start is called before the first frame update
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;

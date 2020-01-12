@@ -138,4 +138,16 @@ public class PlayerAnimation : NetworkBehaviour
         yield return new WaitForSecondsRealtime(AttackAnimationLength);
         anim.SetBool("Attack", false);
     }
+
+    public void Hit()
+    {
+    }
+
+    public void FootR()
+    {
+    }
+
+    public void FootL()
+    {
+    }
 }

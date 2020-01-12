@@ -242,6 +242,7 @@ MonoBehaviour:
   playerSpawnMethod: 1
   spawnPrefabs:
   - {fileID: 2357819808301734944, guid: 1b32c6fbb062b474eb278b3cace7efb8, type: 3}
+  - {fileID: 100000, guid: 519e632abbd2c4cfca074ab7c2c6450d, type: 3}
 --- !u!4 &72901666
 Transform:
   m_ObjectHideFlags: 0
@@ -537,7 +538,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9150943, g: 0.8907746, b: 0.82444817, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
