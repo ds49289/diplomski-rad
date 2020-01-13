@@ -11,7 +11,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private float shootingTimeDisable = 1f;
 
-    private bool isShooting = true;
+    private bool isShooting = false;
 
     private CharacterController characterController;
 
@@ -27,13 +27,19 @@ public class PlayerController : NetworkBehaviour
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("Fire1"))
+        if(Input.GetButton("Fire2"))
+        {
+            PlayerMovement(horizontal, vertical, false);
+            return;
+        }
+            if (Input.GetButtonDown("Fire1"))
         {
             StartCoroutine(DisableMovementIfShooting());
 
         }
 
-        if (isShooting)
+
+        if (!isShooting)
         {
 
             PlayerMovement(horizontal, vertical);
@@ -42,7 +48,7 @@ public class PlayerController : NetworkBehaviour
     }
 
 
-    public void PlayerMovement(float horizontal, float vertical)
+    public void PlayerMovement(float horizontal, float vertical, bool canMove = true)
     {
         var movement = new Vector3(0, 0, 0);
 
@@ -69,7 +75,10 @@ public class PlayerController : NetworkBehaviour
         movement.y = 0;
         movement.Normalize();
 
-        characterController.SimpleMove(movement * Time.deltaTime * moveSpeed);
+        if (canMove)
+        {
+            characterController.SimpleMove(movement * Time.deltaTime * moveSpeed);
+        }
 
         if (movement.magnitude > 0)
         {
@@ -81,8 +90,8 @@ public class PlayerController : NetworkBehaviour
 
     private IEnumerator DisableMovementIfShooting()
     {
-        isShooting = false;
-        yield return new WaitForSecondsRealtime(shootingTimeDisable);
         isShooting = true;
+        yield return new WaitForSecondsRealtime(shootingTimeDisable);
+        isShooting = false;
     }
 }

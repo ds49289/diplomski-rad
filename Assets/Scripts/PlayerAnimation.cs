@@ -9,7 +9,7 @@ public class PlayerAnimation : NetworkBehaviour
     public bool Moving = false;
     [SerializeField]
     private Animator anim;
-    private float AttackAnimationLength = 1f;
+    private float AttackAnimationLength = 0.4f;
 
     void Update()
     {
@@ -28,9 +28,19 @@ public class PlayerAnimation : NetworkBehaviour
         //    //PlayerAttackAnimation();
         //}
 
-        PlayerAnimate(horizontal, vertical);
+        //TODO: treba dodati animaciju kad drzi shield
+        if (Input.GetButton("Fire2"))
+        {
+            
+            PlayerAnimate(0, 0);
 
-        if (Input.GetButtonDown("Fire1"))
+        }
+        else
+        {
+            PlayerAnimate(horizontal, vertical);
+        }
+
+        if (Input.GetButtonDown("Fire1") && !Input.GetButton("Fire2"))
         {
             if (!isLocalPlayer)
             {

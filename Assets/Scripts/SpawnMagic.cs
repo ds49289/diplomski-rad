@@ -19,7 +19,7 @@ public class SpawnMagic : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !isShooting)
+        if (Input.GetButtonDown("Fire1") && !isShooting && !Input.GetButton("Fire2"))
         {
             StartCoroutine(DisableShootingAfterSpawningMagic());
             CmdInstantiateMagicBall();
