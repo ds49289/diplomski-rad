@@ -4774,8 +4774,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  m_AssetId: 519e632abbd2c4cfca074ab7c2c6450d
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 1303837900
 --- !u!54 &75916947076851827
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4804,7 +4804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24a3ff7594505843bb756b987be8aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRate: 25
+  syncMode: 0
+  syncInterval: 0.1
+  damageRate: 10
   part: {fileID: 19800000}
   hasCollided: 0
 --- !u!1 &100002

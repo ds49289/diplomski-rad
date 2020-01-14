@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Health : NetworkBehaviour
 {
+    public const int maxHealth = 100;
     [SyncVar]
-    public float health = 0f;
+    public int health = maxHealth;
+    public RectTransform healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,6 @@ public class Health : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        healthBar.sizeDelta = new Vector2(health * 2, healthBar.sizeDelta.y);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DamageScript : NetworkBehaviour
 {
-    public float damageRate;
+    public int damageRate;
     private GameObject otherPlayer;
 
     //[SerializeField]
@@ -40,7 +40,7 @@ public class DamageScript : NetworkBehaviour
         {
             return;
         }
-        Debug.Log("pogodio sam KURAC: " + other.tag);
+        Debug.Log("pogodio sam: " + other.tag);
         if (other.tag == "Player")
         {
             otherPlayer = other.gameObject;
@@ -53,6 +53,10 @@ public class DamageScript : NetworkBehaviour
     public void DealDamage(GameObject otherPlayer)
     {
         otherPlayer.GetComponent<Health>().health -= damageRate;
+        if(otherPlayer.GetComponent<Health>().health <= 0)
+        {
+            otherPlayer.GetComponent<Respawn>().isDead = true;
+        }
         //CmdDestroyMagicBall();
     }
 
