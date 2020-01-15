@@ -236,10 +236,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Height: 2.7
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2, z: 0}
+  m_Center: {x: 0, y: 1.49, z: 0}
 --- !u!114 &3459526736394684318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,8 +292,6 @@ MonoBehaviour:
   syncInterval: 0.1
   health: 100
   healthBar: {fileID: 6879094286063512867}
-  numberOfKills: 0
-  numberOfDeaths: 0
 --- !u!114 &-8393209683718845552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38cb917e8684834bb200b3185fb2f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  numberOfKills: 0
+  numberOfDeaths: 0
+  isDead: 0
 --- !u!1 &1442250578753545317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,6 +2102,7 @@ GameObject:
   - component: {fileID: 3830917116438310133}
   - component: {fileID: 4770572707831826174}
   - component: {fileID: 5550099081197553572}
+  - component: {fileID: 2343916105266807835}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2171,6 +2175,15 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2782298656212235828}
   m_Enabled: 1
+--- !u!45 &2343916105266807835
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782298656212235828}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 6c154636a358e41b4bcc5d4158c4c529, type: 2}
 --- !u!1001 &509015634455294922
 PrefabInstance:
   m_ObjectHideFlags: 0
