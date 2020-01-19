@@ -22,6 +22,8 @@ namespace Mirror
     [HelpURL("https://mirror-networking.com/docs/Components/NetworkManager.html")]
     public class NetworkManager : MonoBehaviour
     {
+        private float timer = 0f;
+        public NetworkManagerHUD netManHUD;
         /// <summary>
         /// A flag to control whether the NetworkManager object is destroyed when the scene changes.
         /// <para>This should be set if your game has a single NetworkManager that exists for the lifetime of the process. If there is a NetworkManager in each scene, then this should not be set.</para>
@@ -266,6 +268,7 @@ namespace Mirror
         /// </summary>
         public virtual void Awake()
         {
+            netManHUD.showGUI = true;
             Debug.Log("Thank you for using Mirror! https://mirror-networking.com");
 
             // Set the networkSceneName to prevent a scene reload
@@ -290,6 +293,7 @@ namespace Mirror
             // (tick rate is applied in StartServer!)
             if (isHeadless && startOnHeadless)
             {
+                netManHUD.showGUI = true;
                 StartServer();
             }
         }
@@ -320,6 +324,7 @@ namespace Mirror
         /// <returns></returns>
         public bool StartServer()
         {
+            netManHUD.showGUI = true;
             InitializeSingleton();
 
             if (runInBackground)
@@ -359,6 +364,7 @@ namespace Mirror
             string loadedSceneName = SceneManager.GetActiveScene().name;
             if (!string.IsNullOrEmpty(onlineScene) && onlineScene != loadedSceneName && onlineScene != offlineScene)
             {
+                netManHUD.showGUI = true;
                 ServerChangeScene(onlineScene);
             }
             else
@@ -446,6 +452,7 @@ namespace Mirror
             if (!string.IsNullOrEmpty(offlineScene))
             {
                 ServerChangeScene(offlineScene);
+                netManHUD.showGUI = false;
             }
             CleanupNetworkIdentities();
 
@@ -472,6 +479,7 @@ namespace Mirror
             if (!string.IsNullOrEmpty(offlineScene) && SceneManager.GetActiveScene().name != offlineScene)
             {
                 ClientChangeScene(offlineScene, SceneOperation.Normal);
+                netManHUD.showGUI = false;
             }
 
             CleanupNetworkIdentities();
@@ -692,6 +700,10 @@ namespace Mirror
 
         internal void ClientChangeScene(string newSceneName, SceneOperation sceneOperation = SceneOperation.Normal)
         {
+            if (newSceneName == "Level1")
+            {
+                netManHUD.showGUI = true;
+            }
             if (string.IsNullOrEmpty(newSceneName))
             {
                 Debug.LogError("ClientChangeScene empty scene name");
