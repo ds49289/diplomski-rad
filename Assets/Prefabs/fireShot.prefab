@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 19900000}
   - component: {fileID: -3037405211552351108}
   - component: {fileID: 75916947076851827}
-  - component: {fileID: 4631606959765138005}
+  - component: {fileID: 3796362097662243466}
   m_Layer: 0
   m_Name: fireShot
   m_TagString: Magic
@@ -4792,7 +4792,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4631606959765138005
+--- !u!114 &3796362097662243466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4801,14 +4801,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24a3ff7594505843bb756b987be8aae, type: 3}
+  m_Script: {fileID: 11500000, guid: b523e17053da6b44b9b3efbbbd3f4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  damageRate: 10
   part: {fileID: 19800000}
-  hasCollided: 0
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0

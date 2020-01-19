@@ -827,7 +827,7 @@ namespace Mirror
             // in hierarchy order.  This assumes all objects with NetworkStartPosition
             // component are siblings, either in the scene root or together as children
             // under a single parent in the scene.
-            startPositions = startPositions.OrderBy(transform => transform.GetSiblingIndex()).ToList();
+            //startPositions = startPositions.OrderBy(transform => transform.GetSiblingIndex()).ToList();
         }
 
         /// <summary>
