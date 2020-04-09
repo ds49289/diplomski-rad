@@ -15,6 +15,7 @@ public class SpawnMagic : NetworkBehaviour
 
     public float shootingTimeDisable;
     private bool isShooting = false;
+    private float MagicBall_Forward_Force = 15.0f;
 
     // Update is called once per frame
     void Update()
@@ -31,11 +32,11 @@ public class SpawnMagic : NetworkBehaviour
         GameObject magicBallInstance;
         magicBallInstance = Instantiate(MagicBall, MagicSpawnPoint.transform.position, MagicSpawnPoint.transform.rotation) as GameObject;
 
-        //Rigidbody MagicBallCtrl;
-        //MagicBallCtrl = magicBallInstance.GetComponent<Rigidbody>();
+        Rigidbody MagicBallCtrl;
+        MagicBallCtrl = magicBallInstance.GetComponent<Rigidbody>();
 
-        //MagicBallCtrl.AddForce(transform.forward * MagicBall_Forward_Force);
-        //DODANO
+        MagicBallCtrl.AddForce(transform.forward * MagicBall_Forward_Force);
+
         //Destroy(MagicBallCtrl, 3.0f);
         NetworkServer.Spawn(magicBallInstance);
         

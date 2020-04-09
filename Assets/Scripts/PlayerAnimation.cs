@@ -1,4 +1,5 @@
 ﻿using Mirror;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class PlayerAnimation : NetworkBehaviour
     public bool Moving = false;
     [SerializeField]
     private Animator anim;
-    private float AttackAnimationLength = 0.4f;
+    private float AttackAnimationLength = 0.8f;
 
     void Update()
     {
@@ -22,13 +23,6 @@ public class PlayerAnimation : NetworkBehaviour
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
 
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    StartCoroutine(WaitForAttackAnimationToFinish());
-        //    //PlayerAttackAnimation();
-        //}
-
-        //TODO: treba dodati animaciju kad drzi shield
         if (Input.GetButton("Fire2"))
         {
             
@@ -102,7 +96,8 @@ public class PlayerAnimation : NetworkBehaviour
 
     void Attack(bool moving)
     {
-        StartCoroutine(WaitForAttackAnimationToFinish());
+        anim.Play("Attack1Man");
+        // StartCoroutine(WaitForAttackAnimationToFinish());
     }
 
     [Command]
@@ -142,12 +137,12 @@ public class PlayerAnimation : NetworkBehaviour
 
 
 
-    private IEnumerator WaitForAttackAnimationToFinish()
-    {
-        anim.SetBool("Attack", true);
-        yield return new WaitForSecondsRealtime(AttackAnimationLength);
-        anim.SetBool("Attack", false);
-    }
+    //private IEnumerator WaitForAttackAnimationToFinish()
+    //{
+    //    //anim.SetBool("Attack", true);
+    //    //yield return new WaitForSecondsRealtime(AttackAnimationLength);
+    //    //anim.SetBool("Attack", false);
+    //}
 
     public void Hit()
     {
