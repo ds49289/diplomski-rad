@@ -10,7 +10,7 @@ public class PlayerAnimation : NetworkBehaviour
     public bool Moving = false;
     [SerializeField]
     private Animator anim;
-    private float AttackAnimationLength = 0.8f;
+    private float AttackAnimationLength = 0.7f;
 
     void Update()
     {
@@ -97,7 +97,7 @@ public class PlayerAnimation : NetworkBehaviour
     void Attack(bool moving)
     {
         anim.Play("Attack1Man");
-        // StartCoroutine(WaitForAttackAnimationToFinish());
+        StartCoroutine(WaitForAttackAnimationToFinish());
     }
 
     [Command]
@@ -136,13 +136,12 @@ public class PlayerAnimation : NetworkBehaviour
     }
 
 
-
-    //private IEnumerator WaitForAttackAnimationToFinish()
-    //{
-    //    //anim.SetBool("Attack", true);
-    //    //yield return new WaitForSecondsRealtime(AttackAnimationLength);
-    //    //anim.SetBool("Attack", false);
-    //}
+    private IEnumerator WaitForAttackAnimationToFinish()
+    {
+        anim.SetBool("Attack", true);
+        yield return new WaitForSecondsRealtime(AttackAnimationLength);
+        anim.SetBool("Attack", false);
+    }
 
     public void Hit()
     {

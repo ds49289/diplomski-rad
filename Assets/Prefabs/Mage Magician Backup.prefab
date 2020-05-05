@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 6701462249836543711}
   - component: {fileID: 1839904428886062915}
   m_Layer: 0
-  m_Name: Mage Magician
+  m_Name: Mage Magician Backup
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,9 +85,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  moveSpeed: 500
+  moveSpeed: 300
   turnSpeed: 5
-  shootingTimeDisable: 2.35
+  shootingTimeDisable: 3
   lookAtTransform: {fileID: 2035275333467205009}
 --- !u!143 &4688230292593781760
 CharacterController:
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  m_AssetId: 
-  m_SceneId: 4036729853
+  m_AssetId: b3fb6b41c7c3f3d44b04d03d51ae373f
+  m_SceneId: 0
 --- !u!114 &592230913073024203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,8 +195,8 @@ MonoBehaviour:
   MagicSpawnPoint: {fileID: 8642933498749304456}
   MagicBall: {fileID: 465402288088075975, guid: a7657bef21988bb469b1bae45e3d86d3,
     type: 3}
-  shootingTimeDisable: 1.8
-  spawnDelay: 1.7
+  shootingTimeDisable: 1.5
+  spawnDelay: 2
 --- !u!114 &8758376145621183611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +332,7 @@ Animator:
   m_GameObject: {fileID: 1442250578753523211}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 34423d7e0fc1bc84aaa6b3cb3c89e7bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 11bd70ab3f5b37f4e9335748305254a9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
